@@ -4,12 +4,19 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
 
 .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
+    padding: 20px;
 }
 
 .menu {
@@ -66,4 +73,19 @@ body {
 
 .red-box:hover {
     background-color: rgba(255, 0, 0, 0.1);
+}
+
+.info-box {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.info-box h3 {
+    margin: 0 0 10px;
+}
+.info-box p {
+    margin: 0;
+    font-size: 16px;
 }

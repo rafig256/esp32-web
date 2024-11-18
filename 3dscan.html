@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DScan</title>
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+<body>
+
+<header>
+    <h1>3DScan</h1>
+</header>
+
+<div class="container">
+    <div class="info-box">
+        <h3>Pulse Number</h3>
+        <p id="pulseNumber" class="info-value">0</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Line Number</h3>
+        <p id="lineNumber" class="info-value">0</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Sensitivity</h3>
+        <p id="sensitivity" class="info-value">Normal</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Memory</h3>
+        <p id="memory" class="info-value">1024MB</p>
+    </div>
+
+    <div class="info-box">
+        <h3>Scan Type</h3>
+        <p id="scanType" class="info-value">Type A</p>
+    </div>
+</div>
+
+<script>
+    // Example of how to update values with JavaScript
+    function updateValue(id, value) {
+        document.getElementById(id).innerText = value;
+    }
+
+    // Example usage
+    updateValue('pulseNumber', '150');
+    updateValue('lineNumber', '50');
+    updateValue('sensitivity', 'High');
+    updateValue('memory', '2048MB');
+    updateValue('scanType', 'Type B');
+</script>
+
+</body>
+</html>
