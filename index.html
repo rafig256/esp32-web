@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحه ی بررسی امید</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            order: 2;
+        }
+
+        .menu-item {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 150px;
+            text-align: center;
+        }
+
+        .menu-item:hover {
+            background-color: #555;
+        }
+
+        .monitor {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            border: 2px solid #666;
+            border-radius: 10px;
+            padding: 10px;
+            order: 1;
+        }
+
+        .green-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #00ff00;
+            margin: 40px auto;
+        }
+
+        .red-box {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border: 2px solid red;
+            top: 0;
+            left: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .red-box:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="menu">
+        <button class="menu-item">Setting</button>
+        <button class="menu-item">Memory</button>
+        <button class="menu-item">Pointer</button>
+        <button class="menu-item">3s Scan</button>
+    </div>
+
+    <div class="monitor">
+        <div class="green-box">
+            <div class="red-box" id="movingBox"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const movingBox = document.getElementById('movingBox');
+    const greenBox = document.querySelector('.green-box');
+    let position = { x: 0, y: 0 };
+    let direction = 1;
+    let isHorizontal = true;
+    let isMoving = true;
+    let animationFrameId = null;
+
+    function moveBox() {
+        if (!isMoving) return;
+
+        if (isHorizontal) {
+            position.x += 2 * direction;
+            if (position.x >= greenBox.offsetWidth - movingBox.offsetWidth || position.x <= 0) {
+                direction *= -1;
+            }
+        } else {
+            position.y += 2 * direction;
+            if (position.y >= greenBox.offsetHeight - movingBox.offsetHeight || position.y <= 0) {
+                direction *= -1;
+            }
+        }
+
+        movingBox.style.transform = `translate(${position.x}px, ${position.y}px)`;
+        animationFrameId = requestAnimationFrame(moveBox);
+    }
+
+    // تغییر جهت حرکت با کلیک روی مانیتور
+    document.querySelector('.monitor').addEventListener('click', (e) => {
+        // اگر کلیک روی مربع قرمز نباشد
+        if (!e.target.classList.contains('red-box')) {
+            isHorizontal = !isHorizontal;
+            direction = 1;
+            position = { x: position.x, y: position.y };
+        }
+    });
+
+    // توقف حرکت با hover روی مربع قرمز
+    movingBox.addEventListener('mouseenter', () => {
+        isMoving = false;
+        cancelAnimationFrame(animationFrameId);
+    });
+
+    // شروع مجدد حرکت با برداشتن hover
+    movingBox.addEventListener('mouseleave', () => {
+        isMoving = true;
+        moveBox();
+    });
+
+    moveBox();
+</script>
+</body>
+</html>
