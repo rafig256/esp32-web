@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan</title>
+    <link rel="stylesheet" href="asset/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Scan</h1>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="monitor">
+            <div class="green-box">
+                <div class="red-box" id="movingBox"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row flex">
+        <div class="info-box">
+            <h3>Sensor Value</h3>
+            <p id="pulseNumber" class="info-value">0</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Line 20</h3>
+            <p id="lineNumber" class="info-value">0</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Pulse</h3>
+            <p id="sensitivity" class="info-value">Normal</p>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // Example of how to update values with JavaScript
+    function updateValue(id, value) {
+        document.getElementById(id).innerText = value;
+    }
+
+    // Example usage
+    updateValue('pulseNumber', '150');
+    updateValue('lineNumber', '50');
+    updateValue('sensitivity', 'High');
+    updateValue('memory', '2048MB');
+    updateValue('scanType', 'Type B');
+</script>
+
+</body>
+</html>
